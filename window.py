@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QPixmap
 from sql_auth_handler import DatabaseHandler
@@ -8,9 +9,16 @@ from sql_auth_handler import DatabaseHandler
 database_instance = None
 
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+
 def set_default_window_options(current_window: QDialog):
+    icon_path = resource_path('flow.ico')
     current_window.setWindowTitle('flow')
-    current_window.setWindowIcon(QIcon('flow.ico'))
+    current_window.setWindowIcon(QIcon(icon_path))
 
 
 class LoginWindow(QDialog):
