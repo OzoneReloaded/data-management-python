@@ -15,3 +15,9 @@ pyinstaller flow.exe.spec
 ```
 
 Resulting .exe will be deployed to ```dist``` folder.
+
+## Running using python intepreter
+
+```
+python window.py
+```
